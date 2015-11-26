@@ -1,0 +1,60 @@
+<html>
+<head>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <meta charset="utf8">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> 
+
+  <!-- module TVA -->
+  <script src="modules/tva/tva.js"></script>
+  <script src="modules/tva/tvaControllers.js"></script>
+  <script src="modules/tva/tvaServices.js"></script>
+
+  <!-- module application -->
+  <script src="modules/app/app.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="tvaController">
+
+  <div class="container">
+
+    <h1>Calculette TVA</h1>
+    <div class="row">
+      <div class="col-xs-12">
+
+        <form class="form">
+          <div class="form-group">
+            <label>montant HT</label>
+            <input type="text" class="form-control" ng-model="montant"/>
+          </div>
+
+          <div class="form-group">
+            <label>pourcentage TVA</label>
+            <input type="text" class="form-control" ng-model="tva"/>
+          </div>
+
+          <strong>Montant TVA</strong> {{calculTVA().getMontantTVA()}}
+          <hr>
+          <strong>TOTAL TTC </strong> {{calculTVA().getMontantTTC()}}
+
+          <hr>
+          <!-- ng-click -->
+          <div ng-click="tva=0" class="btn btn-success"> Mettre la TVA à 5.5%</div>
+          <div ng-click="tva=10" class="btn btn-primary"> Mettre la TVA à 10%</div>
+          <div ng-click="tva=20" class="btn btn-danger"> Mettre la TVA à 20%</div>
+          <hr />
+          <!-- On peut aussi appeler le controleur -->
+          <div ng-click="montantRandom()" class="btn btn-danger"> Générer un montant aléatoire</div>
+
+
+        </form>
+
+      </div>
+    </div>
+
+
+   <hr>
+
+  </div>
+  
+</body>
+</html>
