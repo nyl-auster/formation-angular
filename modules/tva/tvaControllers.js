@@ -28,11 +28,13 @@ angular.module('tva')
   // fake Items
   $scope.items = [{
     title: "titre 1",
+    imageUrl: "soleil.jpeg"
   }, {
     title: "titre 2",
   }, {
     title: "titre 3"
   }];
+
 
   // json Items
   $http({
