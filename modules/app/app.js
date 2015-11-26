@@ -7,18 +7,17 @@ angular.module('app', ['tva', 'ui.router', 'posts']);
 
 angular.module('app').config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
-  // rediriger sur la page d'accueil si aucune route ne correspond à celle demandée
+  // Rediriger sur la page d'accueil la route demandée n'est pas trouvée
   $urlRouterProvider.otherwise('/');
 
   // Créer un state pour la page d'accueil
   $stateProvider.state('home', {
     url: '/',
-    template: [function() {
-      "Bienvenue sur la page d'accueil du site"
-    }]
+    templateUrl: 'modules/app/views/home.html'
   });
 
-  // Créer une page de test helloWorld
+  // Créer une page de test qui dit "hello", uniquement avec des
+  // fonctions anonymes
   $stateProvider.state('hello', {
     url: '/hello',
     template: function() {

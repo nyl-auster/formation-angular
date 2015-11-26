@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Calculette TVA</h3>
+  </div>
+  <div class="panel-body">
+
+    <form name="tvaForm" class="form">
+      <div class="form-group">
+        <label>Votre montant HT</label>
+        <input type="text" name="montant" class="form-control" ng-model="montant" required/>
+        <br/> 
+        <div ng-click="montantRandom()" class="btn btn-info"> Générer un montant aléatoire</div>
+      </div>
+
+      <div class="form-group">
+        <label>Le pourcentage TVA</label>
+        <input type="text" ng-pattern="" class="form-control" ng-model="tva"/>
+        <br />
+        <div ng-click="tva=5.5" class="btn btn-success"> Mettre la TVA à 5.5%</div>
+        <div ng-click="tva=10" class="btn btn-info"> Mettre la TVA à 10%</div>
+        <div ng-click="tva=20" class="btn btn-primary"> Mettre la TVA à 20%</div>
+
+      </div>
+
+      <strong>Montant TVA</strong> {{calculTVA().getMontantTVA() | currency:"&euro;"}}
+      <hr>
+      <strong>TOTAL TTC </strong> {{calculTVA().getMontantTTC() | currency:"&euro;"}}
+
+      <div ng-hide="tva" style="color:red"> La TVA est obligratoire</div>
+      <div ng-show="tvaIsZero()" style="color:red"> TVA 0 !</div>
+      <div ng-show="tva>20"> Les TVA supérieures à 20% n'existe pas ! (encore) </div>
+
+    </form>
+
+
+  </div>
+</div>
