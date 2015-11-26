@@ -1,7 +1,7 @@
 (function() {
 
   // déclaration du module
-  var module = angular.module('tva', ['ui.router']);
+  var module = angular.module('tva', ['ui.router', 'ngMessages']);
 
   module.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
