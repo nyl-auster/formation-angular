@@ -1,8 +1,12 @@
+<!-- 
+On envoie avec ui-sref l'id du post qui sera récupéré
+Dans le controller postsDetailController via l'objet $stateParams.
+Le lien envoie vers le state "postsDetail" qui possède l'url posts/:id.
+-->
+<div ng-repeat="post in posts" class="list-group" ui-sref="postsDetail({ id: post.id})">
+  <h4 class="list-group-item-heading">{{post.title}}</h4>
+  <p class="list-group-item-text"></p>
+</div>
 
-<loading></loading>
-  <div class="list-group" ng-repeat="post in posts" >
-    <h4 class="list-group-item-heading">{{post.title}}</h4>
-    <p class="list-group-item-text"></p>
-  </div>
 
 

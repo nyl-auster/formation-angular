@@ -10,8 +10,13 @@
     $stateProvider.state('posts', {
       url: '/posts',
       templateUrl: 'modules/posts/views/posts.html',
-      controller: 'postsController',
-      templateUrl: 'modules/posts/views/posts'
+      controller: 'postsController'
+    });
+    
+    $stateProvider.state('postsDetail', {
+      url: '/posts/:id',
+      templateUrl: 'modules/posts/views/postsDetail.html',
+      controller: 'postsDetailController'
     });
 
   }]);
