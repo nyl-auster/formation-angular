@@ -6,12 +6,12 @@
    * C'est le module instancié par la directive ng-app dans le fichier 
    * index.html. C'est ce module qui instancie ensuite tous les autres modules.
    */
-  var module = angular.module('app', ['tva', 'ui.router', 'posts']);
+   var module = angular.module('app', ['tva', 'ui.router', 'posts']);
 
   /**
    * Provides routes / states
    */
-  module.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+   module.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
     // Rediriger sur la page d'accueil la route demandée n'est pas trouvée
     $urlRouterProvider.otherwise('/');
@@ -38,7 +38,7 @@
    * Une directive custom dans son plus simple apparat.
    * voir ici : http://www.sitepoint.com/practical-guide-angularjs-directives/
    */
-  module.directive('helloSimple', [function() {
+   module.directive('helloSimple', [function() {
     return {
       // E comme "element" : attention, il faudra écrire "<hello-simple></hello-simple>" et 
       // pas <helloSimple> !
@@ -53,27 +53,43 @@
 
   }]);
 
-  module.directive('helloColor', function() {
-  return {
+   module.directive('helloColor', function() {
+    return {
     // Element OR attribute : <hello-color></hello-color>
     // or <div hello-color></div> sont possibles.
     restrict: 'AE',
     replace: true,
     // on ajoute une variable {{color}}
-    template: '<input type="text" ng-model="color" placeholder="Enter a color" /><p style="background-color:{{color}}">Hello World',
+    templateUrl: 'modules/app/views/helloColorDirective.html',
 
     // fonction de "compilation", les variables du template
     // sont résolus grâce à cette fonction. On "lie" des variables
     // au scope passé en argument pour les "résoudre".
-    link: function(scope, elem, attrs) {
-      elem.bind('click', function() {
-        elem.css('background-color', 'white');
-        scope.$apply(function() {
-          scope.color = "white";
+    //
+    // "element" est jQuery ou jQlite
+    link: function(scope, element, attrs) {
+      var clicked = false;
+      // une valeur par defaut pour la variable {{class}} de notre bouton
+      scope.class = "btn-primary";
+      // aiu clic, on change la classe de notre bouton
+      element.bind('click', function() {
+        if (!clicked) {
+          // on lance le cycle de digestion d'angular
+          scope.$apply(function() {
+            scope.class = "btn-success";
+            clicked = !clicked;
+          });
+        }
+        else {
+         scope.$apply(function() {
+          scope.class = "btn-danger";
+          clicked = !clicked;
         });
-      });
-      elem.bind('mouseover', function() {
-        elem.css('cursor', 'pointer');
+       }
+     });
+      // au survol, changer le pointeur de la souris
+      element.bind('mouseover', function() {
+        element.css('cursor', 'pointer');
       });
     }
   };
