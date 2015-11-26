@@ -18,6 +18,25 @@ angular.module('tva').factory('calculTVA', [function() {
 
 }]);
 
+// store calculs in local storage
+angular.module('tva').factory('calculStore', [function() {
+  var storeName = "calculStore";
+  return {
+    save: function(item) {
+      items = this.getAll() ? this.getAll() : [];
+      items.push(item);
+      localStorage.setItem(storeName, JSON.stringify(items));
+    },
+    getAll: function() {
+      return JSON.parse(localStorage.getItem(storeName));
+    },
+    deleteAll: function() {
+      localStorage.removeItem(storeName);
+    }
+  };
+
+}]);
+
 //  as a service !
 angular.module('tva').service('calculTVAService', [function() {
 

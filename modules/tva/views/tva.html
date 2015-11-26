@@ -29,6 +29,21 @@
       <div ng-hide="tva" style="color:red"> La TVA est obligratoire</div>
       <div ng-show="tvaIsZero()" style="color:red"> TVA 0 !</div>
       <div ng-show="tva>20"> Les TVA supérieures à 20% n'existe pas ! (encore) </div>
+      <hr/>
+      <br/>
+      <div class="btn btn-success" ng-click="save()"> Ce calcul m'émeut, je souhaite le sauvegarder. </div>
+
+      <div ng-show="calculs" class="well">
+         <ul>
+           <li ng-repeat="calcul in calculs">
+             {{calcul}}
+           </li>
+         </ul>
+      </div>
+
+      <div class="btn btn-danger" ng-click="deleteAll()" ng-show="calculs"> Effacer les calculs </div>
+
+
 
     </form>
 

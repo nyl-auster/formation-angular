@@ -3,7 +3,7 @@
   angular.module('tva')
 
   // injection de dépendance explicite
-  .controller('tvaController', ['$scope', 'calculTVA', '$http', function($scope, calculTVA, $http) {
+  .controller('tvaController', ['$scope', 'calculTVA', '$http', 'calculStore', function($scope, calculTVA, $http, calculStore) {
 
     $scope.montant = 0;
     $scope.tva = 20;
@@ -26,6 +26,30 @@
     $scope.montantRandom = function() {
       $scope.montant = Math.random() * 10000;
     };
+
+    //
+    // STORAGE
+    //
+
+    $scope.calculs = calculStore.getAll()
+
+    $scope.save = function() {
+      var item = {
+        montantHT: $scope.montant,
+        montantTTC: calculTVA.getMontantTTC(),
+        montatTVA: calculTVA.getMontantTVA(),
+        TVA: $scope.tva
+      };
+      calculStore.save(item);
+      $scope.calculs = calculStore.getAll();
+    };
+
+    $scope.deleteAll = function() {
+      calculStore.deleteAll();
+      $scope.calculs = calculStore.getAll();
+    }
+
+
 
   }]);
 

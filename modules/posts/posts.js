@@ -1,6 +1,6 @@
 (function() {
 
-  angular.module('posts', ['ui.router'])
+  angular.module('posts', ['ui.router', 'ngResource'])
 
   .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
