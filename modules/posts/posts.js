@@ -7,11 +7,11 @@
     // For any unmatched url, redirect to "/"
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('list', {
+    $stateProvider.state('posts', {
       url: '/posts',
       templateUrl: 'modules/posts/views/posts.html',
-      controller: 'postController',
-      templateUrl: 'modules/app/views/posts'
+      controller: 'postsController',
+      templateUrl: 'modules/posts/views/posts'
     });
 
   }]);

@@ -2,19 +2,23 @@
 
   angular.module('posts')
 
-  .controller('postsController', ['$scope', function($scope) {
+  .controller('postsController', ['$scope', '$http', function($scope, $http) {
 
-    $scope.posts;
+    $scope.posts = [];
 
     // json Items
-    $http({
-      method: 'GET',
-      url: 'http://jsonplaceholder.typicode.com/posts'
-    }).then(function successCallback(response) {
-      $scope.posts = response.data;
-    }, function errorCallback(response) {
-      alert("http request failed");
-    });
+    $http.get('http://jsonplaceholder.typicode.com/posts').then(
+      // success callback
+      function(response) {
+        $scope.posts = response.data;
+        console.log(response);
+      },
+      // error callback
+      function(response) {
+        alert("Http request failed with status code " + response.status);
+      }
+    );
+
 
   }]);
 
