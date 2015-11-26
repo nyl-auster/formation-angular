@@ -42,14 +42,29 @@
           <div ng-click="tva=0" class="btn btn-success"> Mettre la TVA à 5.5%</div>
           <div ng-click="tva=10" class="btn btn-primary"> Mettre la TVA à 10%</div>
           <div ng-click="tva=20" class="btn btn-danger"> Mettre la TVA à 20%</div>
-          <hr />
+
+          <br /><br />
           <!-- On peut aussi appeler le controleur -->
           <div ng-click="montantRandom()" class="btn btn-danger"> Générer un montant aléatoire</div>
 
+          <h2>NG-SHOW & hide : supprimer la TVA ou mettre une TVA supérieur à 20 pour voir le résultat</h2>
+          <div ng-hide="tva" style="color:red"> La TVA est obligratoire</div>
+          <div ng-show="tvaIsZero()" style="color:red"> TVA 0 !</div>
+          <div ng-show="tva>20"> Les TVA supérieures à 20% n'existe pas ! (encore) </div>
 
+          <hr>
+          <h2>Ng repeat</h2>
+          <div class="jumbotron">
+            <ul>
+            <li ng-repeat="item in items">{{item.title}}</li>
+            </ul>
+          </div>
 
-          <!-- when $scope.myValue is truthy (element is visible) -->
-          <div ng-show="myValue"></div>
+          <div class="jumbotron">
+            <ul>
+            <li ng-repeat="post in posts">{{post.title}}</li>
+            </ul>
+          </div>
 
 
         </form>
