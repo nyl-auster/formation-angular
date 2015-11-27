@@ -22,7 +22,29 @@
 
   }])
 
-  .controller('postsDetailController', ['$scope', '$resource', '$stateParams', '$http', function($scope, $resource, $stateParams, $http) {
+  .controller('postsDetailController', 
+    ['$scope', '$resource', '$stateParams', '$http', 
+    function($scope, $resource, $stateParams, $http) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // resource est un wrapper autour de http
     var resource = $resource('http://jsonplaceholder.typicode.com/posts/:id', {id:'@id'});
@@ -33,7 +55,6 @@
     // précises pour pouvoir utiliser les avantages de resource.
     resource.get({id:$stateParams.id}, function(post){
       $scope.post = post;
-      //post.$save();
     });
 
     // json Items

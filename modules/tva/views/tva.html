@@ -7,12 +7,14 @@
     <form name="tvaForm" class="form">
       <div class="form-group">
 
-        <!--<pre> {{ tvaForm.montant.$error }}</pre>-->
+        <!--<pre> {{ tvaForm | json}}</pre>-->
+
 
         <label>Votre montant HT</label>
-        <input type="text" name="montant" class="form-control" ng-model="montant" required/>
+        <input type="text" name="montant" class="form-control"  ng-model="montant" odd/>
         <div ng-messages="tvaForm.montant.$error" role="alert">
-          <div class="alert-danger" ng-message="required">Ce champ est requis</div>
+          <div ng-message="required">surcharge This field is required</div>
+          <div ng-message="odd">number is not valid</div>
         </div>
 
         <br/> 
@@ -29,8 +31,8 @@
         </div>
         <br />
         <div ng-click="tva=5.5" class="btn btn-default"> 5.5%</div>
-        <div ng-click="tva=10" class="btn btn-info"> 5.5%</div>
-        <div ng-click="tva=20" class="btn btn-primary"> 5.5%</div>
+        <div ng-click="tva=10" class="btn btn-info"> 10%</div>
+        <div ng-click="tva=20" class="btn btn-primary"> 20%</div>
 
       </div>
 
